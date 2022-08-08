@@ -1,0 +1,12 @@
+{
+	"name": "DataLink-Plugin",
+	"tree": {
+		"$className": "DataModel",
+
+		"ServerStorage": { "$className": "ServerStorage", "DatalinkPlugin": {
+			"$path": "src",
+
+			"Submodules": { "$path": "submodules" }
+		}}
+	}
+}
