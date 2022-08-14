@@ -6,9 +6,6 @@
 local THROTTLE_LIMIT = 100
 local THROTTLE_RESET_TIME = 1
 
--- // Modules
-local Signal = require(script.Parent.Imports.Signal)
-
 -- // Variables
 local Throttle = { }
 
@@ -26,8 +23,8 @@ function Throttle.Increment(value)
 	Throttle.value += value
 end
 
-function Throttle.init()
-	Throttle.reset = Signal.new()
+function Throttle.init(Datalink)
+	Throttle.reset = Datalink.Signal.new()
 	Throttle.value = 0
 
 	task.spawn(function()

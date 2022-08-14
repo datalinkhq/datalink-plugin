@@ -12,9 +12,6 @@ local RunService = game:GetService("RunService")
 local INVALID_SESSION_KEY_CONTENT = "Unauthorized"
 local HTTP_CONTENT_TYPE = "application/json"
 
--- // Modules
-local Promise = require(script.Parent.Imports.Promise)
-
 -- // Variables
 local Https = { }
 
@@ -98,12 +95,10 @@ function Https.Authenticate()
 		return
 	end
 
-	local attemptCount = 1
-
 	Https.Datalink.isAuthenticated = false
 	Https.Datalink.isAuthenticating = true
 	Https.Datalink.Console:Log("Authenticating..")
-	return Promise.new(function(promiseObject)
+	return Https.Datalink.Promise.new(function(promiseObject)
 		local success, response = pcall(function()
 			local resolvedUrl, urlMethod = Https.ResolveUrl(Https.Datalink.Constants.Enums.Endpoint.Authenticate)
 
@@ -112,9 +107,7 @@ function Https.Authenticate()
 				Method = urlMethod,
 
 				Headers = Https.AssertHeaders(),
-				Body = Https.AssertBody({
-					isStudio = RunService:IsStudio()
-				})
+				Body = Https.AssertBody()
 			})
 		end)
 
@@ -134,12 +127,6 @@ function Https.Authenticate()
 		Https.Datalink.isAuthenticated = true
 		Https.Datalink.isAuthenticating = false
 		Https.Datalink.onAuthenticated:Fire()
-	end):Catch(function(promise)
-		Https.Datalink.Console:Log("Attempting to Authenticate [Attempt: " .. attemptCount .. "]")
-		attemptCount += 1
-
-		task.wait(1)
-		promise:Retry()
 	end)():Await()
 end
 

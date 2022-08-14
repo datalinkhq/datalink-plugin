@@ -4,15 +4,6 @@
 	This modules function is to provide the DataLink module a handle to what logs it produces
 ]]--
 
--- // Services
-local RunService = game:GetService("RunService")
-
--- // Constants
-local MAX_LOG_CACHE_SIZE = 100
-
-local PRODUCTION_LOG_LEVEL = 5
-local EDGE_PLACE_ID = 10368553785
-
 -- // Variables
 local Console = { }
 

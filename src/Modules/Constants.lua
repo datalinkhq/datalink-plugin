@@ -1,6 +1,6 @@
 return table.freeze({
 	Model = "%s%s",
-	Api = "http://localhost:3000/api",-- "https://datalink.dev/api",
+	Api = "https://datalink.dev/api",
 
 	Endpoints = {
 		Publish = { "/events/publish", "POST" },
