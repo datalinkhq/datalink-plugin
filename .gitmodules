@@ -1,6 +1,6 @@
 [submodule "submodules/Roact"]
 	path = submodules/Roact
-	url = git@github.com:Roblox/roact.git
+	url = https://github.com/Roblox/roact.git
 [submodule "submodules/Flipper"]
 	path = submodules/Flipper
-	url = git@github.com:Reselim/Flipper.git
+	url = https://github.com/Reselim/Flipper.git
